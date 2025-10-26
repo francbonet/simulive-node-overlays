@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulive Player</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 16px; background: #111; color: #eee; }
+    #wrap { max-width: 920px; margin: 0 auto; }
+    video { width: 100%; max-width: 900px; background: #000; outline: none; }
+    #log { white-space: pre-wrap; font: 12px/1.4 monospace; background: #000; padding: 12px; margin-top: 12px; border-radius: 8px; max-height: 240px; overflow: auto; }
+    .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+    input[type=text]{ flex: 1; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #181818; color: #eee; }
+    button { padding: 8px 12px; border-radius: 6px; border: 0; background: #2d6cdf; color: white; cursor: pointer; }
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <h2>Simulive test player</h2>
+  <div class="row">
+    <input id="src" type="text" value="/channel/ovr.m3u8" />
+    <button id="playBtn">Play</button>
+  </div>
+  <video id="video" controls playsinline muted></video>
+  <div id="log"></div>
+</div>
+
+<!-- hls.js -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  const $log = document.getElementById('log');
+  const log = (m) => { $log.textContent += m + '\n'; $log.scrollTop = $log.scrollHeight; };
+
+  const video = document.getElementById('video');
+  const input = document.getElementById('src');
+  const btn = document.getElementById('playBtn');
+
+  function start(url) {
+    $log.textContent = '';
+    log('URL: ' + url);
+
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      // Safari (HLS natiu)
+      video.src = url;
+      video.play().catch(e => log('play error: ' + e));
+      bindNativeEvents();
+    } else if (window.Hls && window.Hls.isSupported()) {
+      const hls = new Hls({
+        debug: true,     
+        lowLatencyMode: false,
+        backBufferLength: 90,
+        liveDurationInfinity: true,
+        maxLiveSyncPlaybackRate: 1.0,
+      });
+      hls.on(Hls.Events.ERROR, (_, data) => {
+        log(`[HLS.js ERROR] type=${data.type} details=${data.details} fatal=${data.fatal}`);
+        if (data.fatal) {
+          if (data.type === 'networkError') { log('→ recoverNetworkError'); hls.startLoad(); }
+          else if (data.type === 'mediaError') { log('→ recoverMediaError'); hls.recoverMediaError(); }
+        }
+      });
+      hls.on(Hls.Events.FRAG_LOADING, (_, d) => log(`FRAG_LOADING ${d?.frag?.relurl || ''}`));
+      hls.on(Hls.Events.FRAG_LOADED,  (_, d) => log(`FRAG_LOADED  ${d?.frag?.relurl || ''} (${Math.round(d.stats?.loaded/1024)}KB)`));
+      hls.on(Hls.Events.LEVEL_SWITCHED, (_, d) => log(`LEVEL_SWITCHED ${d.level}`));
+      hls.attachMedia(video);
+      hls.loadSource(url);
+      video.play().catch(e => log('play error: ' + e));
+      bindNativeEvents();
+    } else {
+      log('HLS no suportat. Prova Safari o instal·la hls.js.');
+    }
+  }
+
+  function bindNativeEvents() {
+    const evs = ['loadedmetadata','loadeddata','canplay','playing','pause','waiting','stalled','error','ended','timeupdate','progress','seeking','seeked'];
+    evs.forEach(e => video.addEventListener(e, () => log('[video] ' + e)));
+    video.addEventListener('error', () => {
+      const err = video.error;
+      log(`[video error] code=${err?.code} msg=${err?.message || 'n/a'}`);
+    });
+  }
+
+  btn.addEventListener('click', () => start(input.value.trim()));
+  // autoplay d’entrada
+  start(input.value.trim());
+</script>
+</body>
+</html>

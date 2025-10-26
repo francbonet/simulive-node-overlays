@@ -1,0 +1,32 @@
+[
+  {
+    "program": "AB-001",
+    "start": 1,
+    "end": 20,
+    "text": "AB-001",
+    "image": "assets/faldon.png",
+    "posX": "left",
+    "posY": "top",
+    "scale": 1
+  },
+  {
+    "program": "AB-003",
+    "start": 1,
+    "end": 20,
+    "text": "", 
+    "image": "assets/logo.png",
+    "posX": "left",
+    "posY": "top",
+    "scale": 0.05
+  },
+  {
+    "program": "AB-007",
+    "start": 1,
+    "end": 20,
+    "text": "AB-007",
+    "image": "assets/faldon.png",
+    "posX": "left",
+    "posY": "top",
+    "scale": 1
+  }
+]

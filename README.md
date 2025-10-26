@@ -1,1 +1,2 @@
-# simulive-node-overlays
+# Simulive Node + Overlays
+See README steps inside.
