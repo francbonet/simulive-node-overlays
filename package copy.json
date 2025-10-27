@@ -4,9 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "sync": "node tools/sync_from_channel.js",
-    "gen:overlays": "node tools/generate_overlays.js",
-    "bootstrap": "npm run sync && npm run gen:overlays"    
+    "gen:overlays": "node tools/generate_overlays.js"
   },
   "dependencies": {
     "express": "^4.19.2",

@@ -1,0 +1,137 @@
+[
+  {
+    "program": "AB-001",
+    "start": 1,
+    "end": 20,
+    "text": { 
+      "text": "AB-001",     
+      "posX": "left",
+      "posY": "top",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40 
+    },
+    "image": {
+      "image": "assets/faldon.png",
+      "posX": "left",
+      "posY": "bottom",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40       
+    }
+  },
+  {
+    "program": "AB-002",
+    "start": 1,
+    "end": 20,
+    "text": { 
+      "text": "AB-002",     
+      "posX": "left",
+      "posY": "top",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40 
+    }
+  },
+  {
+    "program": "AB-003",
+    "start": 1,
+    "end": 20,
+    "text": { 
+      "text": "AB-003",     
+      "posX": "left",
+      "posY": "top",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40 
+    },
+    "image": {
+      "image": "assets/faldon.png",
+      "posX": "left",
+      "posY": "bottom",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40       
+    } 
+  },
+  {
+    "program": "AB-004",
+    "start": 1,
+    "end": 20,
+    "text": { 
+      "text": "AB-004",     
+      "posX": "left",
+      "posY": "top",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40 
+    }
+  },   
+  {
+    "program": "AB-005",
+    "start": 1,
+    "end": 20,
+    "text": { 
+      "text": "AB-005",     
+      "posX": "left",
+      "posY": "top",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40 
+    }
+  }, 
+  {
+    "program": "AB-006",
+    "start": 1,
+    "end": 20,
+    "text": { 
+      "text": "AB-006",     
+      "posX": "left",
+      "posY": "top",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40 
+    }
+  },       
+  {
+    "program": "AB-007",
+    "start": 1,
+    "end": 20,
+    "text": { 
+      "text": "AB-007",     
+      "posX": "left",
+      "posY": "top",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40 
+    },
+    "image": {
+      "image": "assets/faldon.png",
+      "posX": "left",
+      "posY": "bottom",
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textOffsetX": 0,
+      "textOffsetY": 40       
+    }
+  }
+]
